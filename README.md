@@ -1,3 +1,4 @@
+TODO:
 xml or weblink choice
 get sourcecode from weblink implementation
 do you want to choose between songs or do you want 
@@ -5,6 +6,8 @@ the program to ask you to choose between songs
 only if there are songs with identical names
 3,4,5 matches for each song?
 
+
+#### The programmer of the original app says these: ####
 
 # Apple Music to Spotify <br>
  Some simple python 3 scripts to help import your Apple Music playlists into Spotify playlists. <br >
