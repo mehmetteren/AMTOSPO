@@ -1,10 +1,10 @@
-TODO:
-xml or weblink choice
-get sourcecode from weblink implementation
-do you want to choose between songs or do you want 
-the program to ask you to choose between songs
-only if there are songs with identical names
-3,4,5 matches for each song?
+TODO:<br >
+xml or weblink choice<br >
+get sourcecode from weblink implementation<br >
+do you want to choose between songs or do you want <br >
+the program to ask you to choose between songs<br >
+only if there are songs with identical names<br >
+3,4,5 matches for each song?<br >
 
 
 #### The programmer of the original app says these: ####
