@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 
 # Setup tree and root to parse
 
+
 playlist = input('Enter the txt file name: ') + '.txt'
 checkString = "property=\"music:song\" content=\"https://music.apple.com/tr/album/"
 sourceCodeTxt = open(playlist)

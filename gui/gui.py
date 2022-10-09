@@ -3,51 +3,62 @@ from tkinter import messagebox as ms
 
 
 class GUI:
+    choice = ""
+    link = ""
 
     def __init__(self):
-        window = tk.Tk()
-        canvas = tk.Canvas(window, height=400, width=700)
-        canvas.pack()
+        self.window = tk.Tk()
+        self.canvas = tk.Canvas(self.window, height=400, width=700)
+        self.canvas.pack()
 
-        frame_left = tk.Frame(window, bg='grey')
-        frame_left.place(relx=0, rely=0, relheight=1, relwidth=0.12)
+        self.frame_left = tk.Frame(self.window, bg='grey')
+        self.frame_left.place(relx=0, rely=0, relheight=1, relwidth=0.12)
 
-        frame_rightUp = tk.Frame(window, bg='light grey')
-        frame_rightUp.place(relx=0.13, rely=0, relheight=0.5, relwidth=0.87)
+        self.frame_rightUp = tk.Frame(self.window, bg='light grey')
+        self.frame_rightUp.place(relx=0.13, rely=0, relheight=0.5, relwidth=0.87)
 
-        frame_rightDown = tk.Frame(window, bg='light grey')
-        frame_rightDown.place(relx=0.13, rely=0.52, relheight=0.48, relwidth=0.87)
+        self.frame_rightDown = tk.Frame(self.window, bg='light grey')
+        self.frame_rightDown.place(relx=0.13, rely=0.52, relheight=0.48, relwidth=0.87)
 
-        tk.Label(frame_rightUp, bg='light grey', text='Welcome to amtospo!', font="Verdana 25 bold").pack(anchor='s',
+        tk.Label(self.frame_rightUp, bg='light grey', text='Welcome to amtospo!', font="Verdana 25 bold").pack(anchor='s',
                                                                                                           padx=25,
                                                                                                           pady=25)
 
-        tk.Label(frame_rightUp, bg='light grey', text='Playlist from: ', font="Verdana 17 bold").pack(anchor='sw',
+        tk.Label(self.frame_rightUp, bg='light grey', text='Playlist from: ', font="Verdana 17 bold").pack(anchor='sw',
                                                                                                       padx=10,
                                                                                                       pady=10)
 
-        transType_default = tk.StringVar(frame_rightUp)
-        transType_default.set("\t")
+        self.transType_default = tk.StringVar(self.frame_rightUp)
+        self.transType_default.set("\t")
 
-        transType_menu = tk.OptionMenu(frame_rightUp, transType_default, 'Youtube Music', 'Apple Music')
-        transType_menu.pack(padx=10, pady=10, anchor='sw')
+        self.transType_menu = tk.OptionMenu(self.frame_rightUp, self.transType_default, 'Youtube Music', 'Apple Music')
+        self.transType_menu.pack(padx=10, pady=10, anchor='sw')
 
-        tk.Label(frame_rightDown, bg='light grey', text='File name or Url: ', font="Verdana 17 bold").pack(anchor='nw',
+        tk.Label(self.frame_rightDown, bg='light grey', text='File name or Url: ', font="Verdana 17 bold").pack(anchor='nw',
                                                                                                            padx=10,
                                                                                                            pady=10)
 
-        text_space = tk.Text(frame_rightDown, bg='light blue', height=0.5, width=50)
-        text_space.tag_configure('style', foreground='#bfbfbf', font=('Verdana', 7, 'bold'))
-        text_space.pack(anchor='nw', padx=10, pady=10)
+        self.text_space = tk.Text(self.frame_rightDown, bg='light blue', height=0.5, width=50)
+        self.text_space.tag_configure('style', foreground='#bfbfbf', font=('Verdana', 7, 'bold'))
+        self.text_space.pack(anchor='nw', padx=10, pady=10)
 
-        text = 'Paste link or enter XML file name...'
-        text_space.insert('end', text, 'style')
+        self.text = 'Paste link or enter XML file name...'
+        self.text_space.insert('end', self.text, 'style')
 
-        send_button = tk.Button(frame_rightDown, text='Send', command=self.send)
-        send_button.pack(anchor='sw', padx=10, pady=10)
+        self.send_button = tk.Button(self.frame_rightDown, text='Send', command=self.send)
+        self.send_button.pack(anchor='sw', padx=10, pady=10)
 
     #
-    def send(self):
+
+    def sendText(self):
+        if self.transType_default and self.text != 'Paste link or enter XML file name..':
+            return self.text
+        else:
+            message = 'Please enter informations correctly!'
+
+        ms.showwarning('Error', message)
+
+    def sendChoice(self):
         if self.transType_default and self.text != 'Paste link or enter XML file name..':
             return self.transType_default
         else:
@@ -55,14 +66,6 @@ class GUI:
 
         ms.showwarning('Error', message)
 
-
-
-
-if send() == 'Youtube Music':
-    final_song_name = axp.get_song_name()
-    # final_song_name = axp.remove_feat_from_song(song_name)
-    # artist_name = axp.get_artist_name()
-    # album_name = axp.get_album_name()
-    # final_album_name = axp.remove_feat_from_album(album_name)
-
-window.mainloop()
+    def send(self):
+        self.choice = self.transType_default.get()
+        self.link = self.text_space.get("1.0", "end")

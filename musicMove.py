@@ -1,13 +1,16 @@
-import parsers.applemusic_source_parser as axp
-import parsers.applemusic_xml_parser as apxml
-import spotify_accessor as sa
-import ui as ui
+#import parsers.applemusic_source_parser as axp
+#import parsers.applemusic_xml_parser as apxml
+#import spotify_accessor as sa
+import gui.ui as ui
 import gui.gui as gui
 
 print('Welcome to Music Move!\n')
 
 guiObject = gui.GUI()
-
+print(guiObject.link)
+print("ssss")
+guiObject.window.mainloop()
+'''
 if gui.send() == 'Youtube Music':
     final_song_name = axp.get_song_name()
     #final_song_name = axp.remove_feat_from_song(song_name)
@@ -26,3 +29,6 @@ multiple_tracks = sa.get_track_id(final_song_name)
 #more_tracks = sa.get_missing_track_id(missing_albums, missing_tracks)
 #all_songs = sa.add_song_ids(multiple_tracks, more_tracks)
 sa.add_songs_to_playlist(my_username, my_playlist_id, multiple_tracks)
+
+'''
+
