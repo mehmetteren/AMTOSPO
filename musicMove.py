@@ -2,10 +2,11 @@ import applemusic_source_parser as axp
 import applemusic_xml_parser as apxml
 import spotify_accessor as sa
 import ui as ui
-import gui as gui
+import gui.gui as gui
 
 print('Welcome to Music Move!\n')
 
+guiObject()
 
 if gui.send() == 'Youtube Music':
     final_song_name = axp.get_song_name()
