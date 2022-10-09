@@ -11,6 +11,7 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 
 # Get Spotify Username
+'''
 def get_username():
     username = input('Enter Username: ')
     print(username)
@@ -20,13 +21,13 @@ def get_username():
     else:
         new_username = input('Reenter Username: ')
         return new_username
+'''
 
 
 # Create Spotify playlist ID
-def create_playlist(username):
+def create_playlist(username, playlistName):
 
     username = username
-    playlist_name = input('Enter playlist name: ')
 
     token = util.prompt_for_user_token(username=username, scope='playlist-modify-public', client_id=client_id,
                                        client_secret=client_secret, redirect_uri="http://localhost:8888/callback")
@@ -34,7 +35,7 @@ def create_playlist(username):
     if token:
         sp = spotipy.Spotify(auth=token)
         sp.trace = False
-        playlists = sp.user_playlist_create(username, playlist_name)
+        playlists = sp.user_playlist_create(username, playlistName)
         return playlists['id']
 
 
